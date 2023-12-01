@@ -67,9 +67,10 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
 
         try:
-            task = form.save()
-            return JsonResponse({'success': 'Task created successfully', 'task_id': task.id}, status=201)
+            # Try to save the form
+            return super().form_valid(form)
         except ValidationError as e:
+            # Catch ValidationError and add an error to the form
             form.add_error(None, _(str(e)))
             return self.form_invalid(form)
 
@@ -89,10 +90,6 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'TodoApp/delete.html'
     success_url = reverse_lazy("tasks")
-
-    def delete(self, request, *args, **kwargs):
-        response = super().delete(request, *args, **kwargs)
-        return JsonResponse({'success': 'Task deleted successfully'}, status=200)
 
 
 class UpdateList(LoginRequiredMixin, UpdateView):
