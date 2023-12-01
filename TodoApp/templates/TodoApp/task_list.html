@@ -1,0 +1,70 @@
+{% extends 'TodoApp/main.html' %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="flexbox">
+            <div class="header-bar">
+                <h1>Hey {{ request.user }}</h1>
+                <a href="{% url 'logout' %}">LogOut</a>
+                <form method="get">
+                <input type="text" name="search-area" value="{{ search_input }}">
+                <input type="submit" value="Search">
+            </form>
+            </div>
+
+            <hr>
+            <div class="task">
+                <h2>Your Tasks Here</h2>
+                <a class="create-button" href="{% url 'task-create' %}">Add</a>
+            </div>
+            <div class="task-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Created on</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                            <tr>
+                                <td>
+                                    <a class="task-view" href="{% url 'task' task.id %}">{{ task.title }}</a>
+                                </td>
+                                <td class="status-container">
+                                    {% if task.status == 'OVERDUE' %}
+                                        <p class="status-overdue"><sup>{{ task.status }}</sup></p>
+                                    {% elif task.status == 'DONE' %}
+                                    <p class="status-completed"><sup>{{ task.status }}</sup></p>
+                                    {% elif task.status == 'WORKING' %}
+                                    <p class="status-processing"><sup>{{ task.status }}</sup></p>
+                                    {% else%}
+                                    <p class="status-open"><sup>{{ task.status }}</sup></p>
+
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <p class="tags">{{ task.tags }}</p>
+                                    <p class="time">{{ task.timestamp }}</p>
+                                </td>
+                                <td>
+                                    <a href="{% url 'task-update' task.id %}"><i class="material-icons">&#xe3c9;</i></a>
+                                    <a href="{% url 'task-delete' task.id %}"><i class="material-icons">&#xe872;</i></a>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="4"><h3>No items</h3></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+{% endblock content %}
+

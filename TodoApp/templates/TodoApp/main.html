@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Include Bootstrap CSS in your HTML file -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Add your custom styles in a style tag or link to your custom CSS file -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgba(255, 200, 255, 0.2);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flexbox {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background: linear-gradient(to bottom, #54E38E, #41C7AF);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            width: 600px; /* Adjust as needed */
+            height: 600px; /* Equal width and height for a square shape */
+        }
+
+        .header-bar {
+            background: linear-gradient(to bottom, #33BBC5, #85E6C5);
+            color: #fff;
+            padding: 15px;
+            width: 100%;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 3px;
+        }
+
+        .header-bar h1 {
+            margin: 0;
+            margin-bottom: 10px;
+
+        }
+
+        .header-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: auto; /* Align to the right */
+        }
+
+        .header-bar form {
+            margin-top: 10px;
+            display: flex;
+        }
+
+        .header-bar input[type="text"] {
+            padding: 10px;
+            color: white;
+            margin-right: 5px;
+            width: 200px;
+            background-color: rgba(255, 200, 255, 0.2);
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .task {
+            margin-top: 0px;
+        }
+
+        .task h2 {
+            color: white;
+        }
+
+        .header-bar input[type="submit"] {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .task-table {
+            margin-top: 10px;
+            border-radius: 15px;
+            overflow: auto; /* Ensure that rounded corners don't overflow content */
+            max-height: 400px;
+        }
+
+        sub {
+            margin-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px; /* Moved margin-top from .task-table to table */
+        }
+
+        .create-button {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 450px;
+            font-size: 20px;
+        }
+
+        table, th, td {
+            border: 0px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: linear-gradient(to bottom, #64CCC5, #176B87);
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background: linear-gradient(to bottom, #54E38E, #41C7AF);
+        }
+
+        a {
+            color: #007BFF;
+            font-size:17px;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+        .tags{
+        margin-left:10px;
+        font-size:15px;
+        color:blue;}
+        .time{
+                margin-left:10px;
+                margin-top:0px;
+                        font-size:12px;
+
+
+        }
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* Add styles for different task statuses */
+        .status-overdue,
+        .status-completed,
+        .status-processing,
+        .status-open{
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            display: inline-flex;
+            margin-left:2px;
+            align-items: center;
+            justify-content: center;
+        }
+        p{
+        margin-left:5px;
+        }
+        .status-container {
+    white-space: nowrap; /* Prevent line breaks in the status column */
+    max-width: 100px; /* Adjust the max-width as needed */
+}
+        sup{
+        padding:10px;
+        margin-left:78px;
+        margin-right:0px;
+        margin-top:13px;
+}
+
+        .status-overdue {
+            background-color: #FF5252; /* Red */
+        }
+        .status-open {
+            background-color: #96EFFF;
+        }
+        .status-completed {
+            color: white;
+            background-color: #4CAF50; /* Green */
+        }
+
+        .status-processing {
+            color: #333;
+            background-color: #FFD600; /* Yellow */
+        }
+
+        .login ,.log-but{
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+           }
+
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        input[type="text"],input[type="password"] ,textarea,select{
+            padding: 10px;
+            color: white;
+            margin-right: 5px;
+            width: 200px;
+            background-color: rgba(255, 200, 255, 0.2);
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        }
+select option {
+    background-color: #41C7AF; /* Background color for options */
+    color: white;}
+        .log-reg{
+            margin-top: 20px;  /* Adjust as needed */
+            margin-left:50px;}
+             .flexbox-login {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background: linear-gradient(to bottom, #54E38E, #41C7AF);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            width: 400px; /* Adjust as needed */
+            height: 400px; /* Equal width and height for a square shape */
+        }
+        .flexbox-login h1 , .flexbox-register h1{
+        color:white;
+            margin: 0;
+            margin-bottom: 10px;
+
+        }
+         .flexbox-register {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background: linear-gradient(to bottom, #9AD0C2, #ECF4D6);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            width: 460px; /* Adjust as needed */
+            height: 700px; /* Equal width and height for a square shape */
+        }
+.flexbox-create {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background: linear-gradient(to bottom, #C5FFF8, #96EFFF);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            width: 460px; /* Adjust as needed */
+            height: 700px; /* Equal width and height for a square shape */
+        }
+        .flexbox-del {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background: linear-gradient(to bottom, #54E38E, #41C7AF);
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            width: 270px; /* Adjust as needed */
+            height: 200px; /* Equal width and height for a square shape */
+        }
+    </style>
+
+    <!-- Your HTML code remains the same -->
+
+    <title>Title</title>
+</head>
+<body>
+    {% block content%}
+
+    {% endblock content%}
+</body>
+</html>

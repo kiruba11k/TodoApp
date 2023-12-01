@@ -1,0 +1,13 @@
+{% extends 'TodoApp/main.html' %}
+{% block content %}
+<div class="flexbox">
+    <h1>View</h1>
+<h1>Task : {{task }}</h1><br>
+<h2>Description:{{task.description}}</h2><br>
+<h2>STATUS:{{task.status}}</h2><br>
+<h2>Tags:{{task.tags}}</h2><br>
+
+
+<a href="{% url 'tasks' %}">Go Back</a>
+</div>
+{% endblock content %}

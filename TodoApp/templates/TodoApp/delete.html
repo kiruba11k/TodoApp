@@ -1,0 +1,11 @@
+{% extends 'TodoApp/main.html' %}
+{% block content %}
+<div class="flexbox-del">
+<form method="post">
+    {% csrf_token %}
+    <h3>Are you sure to delete this Task {{task.title}}</h3>
+    <a href="{% url 'tasks'%}">Go back</a>
+    <input type="submit" value="Delete">
+</form>
+</div>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'TodoApp/main.html' %}
+{% block content %}
+<div class="flexbox-login">
+    <h1 class="log">Login</h1>
+    <form class="login" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class ="log-but" type="submit" value="Login">
+</form>
+    <hr>
+    <p class="log-reg">Don't Have Any Account ?<a href="{% url 'register'%}">Register</a></p>
+
+</div>
+{% endblock content %}
