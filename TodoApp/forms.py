@@ -6,6 +6,7 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ["title", "description", "status", "tags", "due_date"]
+        widgets = {'due_date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD'}), }
 
     # Override the clean_tags method to handle updating the tags field
     def clean_tags(self):
