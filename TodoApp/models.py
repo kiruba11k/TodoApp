@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+
 
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -20,9 +22,8 @@ class Task(models.Model):
     status = models.CharField(max_length=20, choices=status_choices, default='OPEN', blank=False)
 
     def clean(self):
-        # Ensure 'Due Date' is not before 'Timestamp created'
-        if self.due_date and self.timestamp and self.due_date < self.timestamp.date():
-            raise ValidationError("Due Date cannot be before Timestamp created.")
+        if self.due_date and self.due_date < timezone.now().date():
+            raise ValidationError({'due_date': _('Due date cannot be in the past.')})
 
     def save(self, *args, **kwargs):
         # Set the timestamp here before saving
