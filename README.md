@@ -8,6 +8,7 @@ This project involves designing the backend for a web-based To-Do List applicati
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
+- [Code Coverage](#code-coverage)
 - [Built With](#built-with)
 - [Contributing](#contributing)
 - [License](#license)
@@ -55,6 +56,10 @@ What things you need to install the software and how to install them:
    python manage.py runserver
 
 2. **Visit http://localhost:8000/ in your browser.**
+
+## Code Coverage
+
+![Coverage Summary](screenshots/coverage_summary.png)
 
 ## Built With
 <span style="color:#348ceb">Django </span>- The web framework used
