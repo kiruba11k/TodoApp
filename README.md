@@ -59,7 +59,7 @@ What things you need to install the software and how to install them:
 
 ## Code Coverage
 
-![Coverage Summary](/coverage_summary.png)
+(/coverage_summary.png)
 
 ## Built With
 <span style="color:#348ceb">Django </span>- The web framework used
