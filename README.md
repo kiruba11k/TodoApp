@@ -9,6 +9,7 @@ This project involves designing the backend for a web-based To-Do List applicati
   - [Installation](#installation)
 - [Usage](#usage)
 - [Code Coverage](#code-coverage)
+- [Live Demo](#live-demo)
 - [Built With](#built-with)
 - [Contributing](#contributing)
 - [License](#license)
@@ -59,7 +60,11 @@ What things you need to install the software and how to install them:
 
 ## Code Coverage
 
-(/coverage_summary.png)
+![Coverage Summary](screenshots/coverage_summary.png)
+
+## Live Demo
+
+Check out the live demo [here](http://kiruba.pythonanywhere.com).
 
 ## Built With
 <span style="color:#348ceb">Django </span>- The web framework used
