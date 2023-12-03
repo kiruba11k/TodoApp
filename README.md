@@ -60,7 +60,7 @@ What things you need to install the software and how to install them:
 
 ## Code Coverage
 
-(screenshots/coverage_summary.png)
+![Coverage Summary](screenshots/coverage_summary.png)
 
 ## Live Demo
 
