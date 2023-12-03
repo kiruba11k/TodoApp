@@ -1,6 +1,6 @@
 # TodoApp
 
-Brief project description.
+This project involves designing the backend for a web-based To-Do List application. The primary goal is to create a Django app with appropriate models to store information for the To-Do List app, meeting the following requirements:
 
 ## Table of Contents
 
