@@ -78,7 +78,9 @@ class TaskCreateView(TaskFormMixin, CreateView):
     pass
 
 
-class UpdateList(TaskFormMixin, UpdateView):
+class TaskUpdateView(TaskFormMixin, UpdateView):
+    model = Task  # Specify the model for the view
+
     pass
 
 
