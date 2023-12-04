@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)wt3=2=_^(hbr--0bay1%t%*%4)inc11f^+apa_*92uq#b$kre
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kiruba.pythonanywhere.com', 'www.kiruba.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -127,12 +127,7 @@ LOGIN_URL = 'login'
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATICFILES_DIRS = [
-    # Absolute path to the directory where static files will be collected.
-    os.path.join(BASE_DIR, 'static'),
-]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
