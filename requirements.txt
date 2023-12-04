@@ -7,7 +7,7 @@ iniconfig==2.0.0
 packaging==23.2
 pluggy==1.2.0
 pytest==7.4.3
-pytest-django==4.7.0
+pytest-django==4.5.2
 pytz==2023.3.post1
 sqlparse==0.4.4
 tzdata==2023.3
