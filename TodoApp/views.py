@@ -57,9 +57,9 @@ class TaskDetailView(DetailView):
     model = Task
 
 
-class TaskFormMixin(LoginRequiredMixin):
-    form_class = TaskForm
+class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'TodoApp/create.html'
+    form_class = TaskForm
     success_url = reverse_lazy("tasks")
 
     def form_valid(self, form):
@@ -74,17 +74,29 @@ class TaskFormMixin(LoginRequiredMixin):
             return self.form_invalid(form)
 
 
-class TaskCreateView(TaskFormMixin, CreateView):
-    pass
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
+    model = Task
+    form_class = TaskForm
+    template_name = 'TodoApp/create.html'
+    success_url = reverse_lazy("tasks")
 
-
-class TaskUpdateView(TaskFormMixin, UpdateView):
-    model = Task  # Specify the model for the view
-
-    pass
+    def form_valid(self, form):
+        # Do any additional processing if needed
+        return super().form_valid(form)
 
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'TodoApp/delete.html'
     success_url = reverse_lazy("tasks")
+
+
+class UpdateList(LoginRequiredMixin, UpdateView):
+    model = Task
+    form_class = TaskForm
+    template_name = 'TodoApp/create.html'
+    success_url = reverse_lazy("tasks")
+
+    def form_valid(self, form):
+        # Do any additional processing if needed
+        return super().form_valid(form)
