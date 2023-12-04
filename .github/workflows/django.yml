@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
     - name: Install coverage
       run: |
-        pip install coverage==7.2.5
+        pip install coverage
     - name: Run Tests
       run: |
         python manage.py test
