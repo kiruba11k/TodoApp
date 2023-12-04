@@ -6,6 +6,10 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
+class TaskManager(models.Manager):
+    pass
+
+
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -13,13 +17,15 @@ class Task(models.Model):
     description = models.TextField(max_length=1000)
     due_date = models.DateField(null=True, blank=True)
     tags = models.CharField(max_length=200, default='', blank=True)
-    status_choices = [
+    STATUS_CHOICES = [
         ('OPEN', 'Open'),
         ('WORKING', 'Working'),
         ('DONE', 'Done'),
         ('OVERDUE', 'Overdue'),
     ]
-    status = models.CharField(max_length=20, choices=status_choices, default='OPEN', blank=False)
+
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='OPEN', blank=False)
+    objects = TaskManager()
 
     def clean(self):
         if self.due_date and self.due_date < timezone.now().date():
