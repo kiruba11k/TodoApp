@@ -17,14 +17,13 @@ class Task(models.Model):
     description = models.TextField(max_length=1000)
     due_date = models.DateField(null=True, blank=True)
     tags = models.CharField(max_length=200, default='', blank=True)
-    STATUS_CHOICES = [
+    status_choices = [
         ('OPEN', 'Open'),
         ('WORKING', 'Working'),
         ('DONE', 'Done'),
         ('OVERDUE', 'Overdue'),
     ]
-
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='OPEN', blank=False)
+    status = models.CharField(max_length=20, choices=status_choices, default='OPEN', blank=False)
     objects = TaskManager()
 
     def clean(self):
@@ -39,18 +38,3 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
-
-    def clean_tags(self):
-        tags = self.tags
-        if tags:
-            tag_list = [tag.strip() for tag in tags.split(',')]
-            for tag in tag_list:
-                if not tag.isalnum():
-                    raise ValidationError("Tags must be alphanumeric.", code='invalid_tags')
-        return tags
-
-    def clean_status(self):
-        status = self.status
-        if not status:
-            raise ValidationError("This field is required.")
-        return status
