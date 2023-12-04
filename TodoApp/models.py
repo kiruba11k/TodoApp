@@ -39,3 +39,18 @@ class Task(models.Model):
 
     def __str__(self):
         return self.title
+
+    def clean_tags(self):
+        tags = self.tags
+        if tags:
+            tag_list = [tag.strip() for tag in tags.split(',')]
+            for tag in tag_list:
+                if not tag.isalnum():
+                    raise ValidationError("Tags must be alphanumeric.", code='invalid_tags')
+        return tags
+
+    def clean_status(self):
+        status = self.status
+        if not status:
+            raise ValidationError("This field is required.")
+        return status

@@ -31,7 +31,7 @@ class TaskForm(forms.ModelForm):
         """
         status = self.cleaned_data.get('status')
         if not status:
-            raise forms.ValidationError("This field is required.")
+            raise forms.ValidationError("Please select a status for the task.")
         return status
 
     def clean_due_date(self):
